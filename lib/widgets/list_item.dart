@@ -161,7 +161,9 @@ class ListItem extends StatelessWidget {
                                 ),
                                 Spacer(),
                                 ElevatedButton(
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      Get.back();
+                                    },
                                     style: ElevatedButton.styleFrom(
                                       primary: const Color(0xffd7c736),
                                     ),
