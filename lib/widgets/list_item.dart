@@ -1,10 +1,13 @@
 import 'package:cashrich_demo/model/bitcoin_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 
 class ListItem extends StatelessWidget {
   final BitCoinModel model;
-  const ListItem({Key? key, required this.model}) : super(key: key);
+  ListItem({Key? key, required this.model}) : super(key: key);
+
+  DateFormat format = DateFormat("dd-MM-yyyy hh:mm a");
 
   @override
   Widget build(BuildContext context) {
@@ -113,6 +116,9 @@ class ListItem extends StatelessWidget {
                                   height: 20,
                                 ),
                                 Text("Tags"),
+                                SizedBox(
+                                  height: 10,
+                                ),
                                 Container(
                                   height: 50,
                                   child: ListView.builder(
@@ -135,7 +141,39 @@ class ListItem extends StatelessWidget {
                                           ),
                                         );
                                       }),
-                                )
+                                ),
+                                SizedBox(
+                                  height: 40,
+                                ),
+                                Text(
+                                  "Last Price Upated",
+                                  style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                                ),
+                                SizedBox(
+                                  height: 20,
+                                ),
+                                Text(
+                                  format.format(
+                                    DateTime.parse(model.lastUpdated!),
+                                  ),
+                                  style:
+                                      const TextStyle(color: Colors.green, fontSize: 18, fontWeight: FontWeight.bold),
+                                ),
+                                Spacer(),
+                                ElevatedButton(
+                                    onPressed: () {},
+                                    style: ElevatedButton.styleFrom(
+                                      primary: const Color(0xffd7c736),
+                                    ),
+                                    child: Center(
+                                      child: Text(
+                                        "Close",
+                                        style: const TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 18,
+                                        ),
+                                      ),
+                                    ))
                               ],
                             ),
                           );
